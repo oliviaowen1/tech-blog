@@ -16,14 +16,23 @@
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
+    "express-handlebars": "^5.2.1",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "path": "^0.12.7",
+    "sequelize": "^6.6.2"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.1.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliviaowen1/tech-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oliviaowen1/tech-blog/issues"
+  },
+  "homepage": "https://github.com/oliviaowen1/tech-blog#readme"
 }
