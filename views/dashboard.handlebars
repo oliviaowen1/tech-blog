@@ -10,18 +10,21 @@
 
     <form class="form new-post-form">
       <div class="form-group">
-        <label for="post-name">Blog title:</label>
-        <input class="form-input" type="text" id="post-name" name="post-name" />
+        <label for="post-name">Blog Title:</label>
+        <input type="text" class="form-input" id="post-name" name="post-name">
       </div>
       <div class="form-group">
-        <label for="post-desc">description:</label>
-        <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+        <label for="post-desc">Description: </label>
+        <textarea class="form-control" id="post-desc" name="post-desc"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
     </form>
+
   </div>
+
+
 
   {{#if posts.length}}
   <div class="col-md-6 post-list">
@@ -34,6 +37,7 @@
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+        <a href="/dashboard/edit/{{post.id}}"><button class="button btn-success">edit post</button></a>
       </div>
     </div>
     {{/each}}

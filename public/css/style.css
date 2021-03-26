@@ -2,10 +2,30 @@
     color: white;
 }
 
-footer{
+.footer {
     z-index: 1;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    background-color: slategray !important;
+}
+
+body {
+    background-color:#6699cc;
+    color: white;
+}
+
+.navbar {
+    background-color: 	slategray !important;
+}
+
+.b-post {
+    background-color: slategray !important;
+    color: white;
+}
+
+.b-post-two {
+    background-color: darkgray !important;
+    color: white !important;
 }
