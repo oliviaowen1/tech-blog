@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <title>Tech Blog</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <a class="navbar-brand" href="/">Tech Blog</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,14 +28,17 @@
         </li>
         {{#if logged_in}}
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <a class="nav-link active" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
           <button class="btn btn-dark" id="logout">Logout</button>
         </li>
         {{else}}
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link active" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/signup">Sign Up</a>
         </li>
         
         {{/if}}
@@ -54,9 +57,9 @@
   <br>
 
   {{!-- Footer section --}}
-  <footer class="footer mt-auto bg-warning">
+  <footer class="footer mt-auto bg-danger">
     <div class="container footer-con text-center">
-      <span class="footer-span">© 2021 All Rights Reserved by Karen Opoku</span>
+      <span class="footer-span">© 2021</span>
       <br>
     </div>
   </footer>
