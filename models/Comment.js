@@ -11,10 +11,6 @@ Comment.init(
         allowNull: false,
         autoIncrement: true
       },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,

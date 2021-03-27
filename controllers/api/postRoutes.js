@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -36,20 +36,16 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 // Comment post
-router.post('/:id', withAuth, (req, res) => {
-  // check the session
-  if (req.session) {
-    Comment.create({
+router.post('/:id', withAuth, async (req, res) => {
+  try {
+    const newComment = await Comment.create({
       comment_text: req.body.comment_text,
-      post_id: req.body.post_id,
-      // use the id from the session
+      post_id: parseInt(req.body.post_id),
       user_id: req.session.user_id,
-    })
-      .then(dbCommentData => res.json(dbCommentData))
-      .catch(err => {
-        console.log(err);
-        res.status(400).json(err);
-      });
+    });
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
