@@ -1,29 +1,30 @@
-const editButtonHandler = async (event) => {
+const editFormHandler = async (event) => {
     event.preventDefault();
-    const title = document.querySelector('input[name="edit-blog-title"]').value;
-    const description = document.querySelector('input[name="edit-blog-body"]').value;
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
+  
+    const title = document.querySelector('input[name="post-name"]').value;
+    const post_content = document.querySelector('input[name="post-desc"]').value;
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+      ];
 
-        const response = await fetch(`/api/blogs/${id}`, {
-            method: 'PUT',
-            body: JSON.stringify({
-                title,
-                description
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            document.location.replace('/profile');
-        } else {
-            alert('Failed to update blog');
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            title,
+            post_content
+        }),
+        headers: {
+            'Content-Type': 'application/json'
         }
-    }
-};
-
-document
-    .querySelector('.edit-blog-form')
-    .addEventListener('submit', editButtonHandler);
+      });
+      
+      if (response.ok) {
+        document.location.replace('/dashboard/');
+      } else {
+        alert(response.statusText);
+      }
+  }
+  
+  document
+  .querySelector('.edit-post-form')
+  .addEventListener('submit', editFormHandler);

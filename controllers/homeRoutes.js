@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     // Get all posts and JOIN with user data
     const postData = await Post.findAll({
@@ -50,28 +50,6 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-router.get('/dashboard/edit/:id', async (req, res) => {
-  try {
-    const postData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    const post = postData.get({ plain: true });
-
-    res.render('edit-post', {
-      ...post,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
@@ -86,6 +64,22 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', {
       ...user,
       logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/dashboard/edit/:id', async (req, res) => {
+  console.log(res)
+  try {
+    const postData = await Post.findByPk(req.params.id);
+
+    const post = postData.get({ plain: true });
+    
+    res.render('edit-post', {
+      ...post,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
