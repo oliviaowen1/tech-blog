@@ -22,7 +22,6 @@ const editButtonHandler = async (event) => {
         } else {
             alert('Failed to update post');
         }
-    
 };
 
 document
