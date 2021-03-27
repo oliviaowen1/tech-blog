@@ -31,6 +31,11 @@ body {
     color: white !important;
 }
 
+.comment-post {
+    background-color:skyblue !important;
+    padding: 20px;
+}
+
 .home-list {
     background-color:lightsteelblue;
     border-radius: 20px;
@@ -42,6 +47,6 @@ body {
     padding: 20px;
 }
 
-.login-btn, .signup-btn {
+.login-btn, .signup-btn, .comment-submit {
     background-color: slategray !important;
 }

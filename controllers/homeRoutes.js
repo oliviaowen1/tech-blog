@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -28,6 +28,7 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+// Edit post
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -108,6 +109,7 @@ router.get('/dashboard/edit/:id', async (req, res) => {
   }
 });
 
+// log in
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -118,6 +120,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// sign up
 router.get('/signup', (req, res) => {
   // Route to signup page
   if (req.session.logged_in) {
@@ -127,5 +130,53 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
+
+// comment routes
+router.get('/', (req, res) => {
+    Comment.findAll({})
+      .then(dbCommentData => res.json(dbCommentData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+});
+
+router.post('/', withAuth, (req, res) => {
+  // check the session
+  if (req.session) {
+    Comment.create({
+      comment_text: req.body.comment_text,
+      post_id: req.body.post_id,
+      // use the id from the session
+      user_id: req.session.user_id,
+    })
+      .then(dbCommentData => res.json(dbCommentData))
+      .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  }
+});
+
+router.delete('/:id', withAuth, (req, res) => {
+    Comment.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+        .then(dbCommentData => {
+          if (!dbCommentData) {
+            res.status(404).json({ message: 'No comment found with this id' });
+            return;
+          }
+          res.json(dbCommentData);
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+});
+
+module.exports = router;
 
 module.exports = router;

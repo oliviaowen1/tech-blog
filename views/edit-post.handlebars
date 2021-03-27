@@ -1,4 +1,4 @@
-<article class="p-2"style="background-color: #898989">
+<article class="p-2"style="background-color: lightsteelblue ">
   <a href="/dashboard" class="is-pulled-right"> &larr; back to dashboard</a>
   <h2 class="title mt-3">Edit post</h2><hr>
 <form class="form new-post-form edit-post-form">
@@ -11,15 +11,9 @@
       <div class="form-group">
         <label for="post-desc">Post Content:</label><br>
       <input name="edit-post-body" contenteditable="true" id="post-desc" value="{{description}}" /> 
-      {{!-- comments section --}}
-      {{!-- <div class="is-pulled-right">
-       created by you on {{format_date post.created_at}}
-      |
-      <a href="/post/{{post.id}}">{{post.comments.length}} {{ "comment" post.comments.length}}</a>
-    </div> --}}
       {{!-- submit button --}}
       <div class="form-group">
-        <button type="submit" class="button btn-success submit"> Save Changes</button>
+        <button type="submit" class="button btn-success btn btn-sm submit"> Save Changes</button>
       </div>
     </form>
 </article>

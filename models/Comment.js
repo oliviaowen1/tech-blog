@@ -11,6 +11,10 @@ Comment.init(
         allowNull: false,
         autoIncrement: true
       },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -30,10 +34,12 @@ Comment.init(
       comment_text: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            len: [1]
-        }
-      }
+      },
+      date_created: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
   },
   {
     sequelize,
