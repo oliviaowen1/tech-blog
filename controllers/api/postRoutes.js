@@ -37,6 +37,8 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 // Comment post
 router.post('/:id', withAuth, async (req, res) => {
+  console.log(req.body);
+  console.log(req.session.user_id);
   try {
     const newComment = await Comment.create({
       comment_text: req.body.comment_text,
