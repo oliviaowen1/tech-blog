@@ -141,7 +141,7 @@ router.get('/', (req, res) => {
       });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/:id', withAuth, (req, res) => {
   // check the session
   if (req.session) {
     Comment.create({
@@ -176,7 +176,5 @@ router.delete('/:id', withAuth, (req, res) => {
           res.status(500).json(err);
         });
 });
-
-module.exports = router;
 
 module.exports = router;
