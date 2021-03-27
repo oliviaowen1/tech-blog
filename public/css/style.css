@@ -36,8 +36,12 @@ body {
     border-radius: 20px;
 }
 
-.new-blog {
+.new-blog, .login-form, .signup-form {
     background-color: lightsteelblue;
     border-radius: 20px;
     padding: 20px;
+}
+
+.login-btn, .signup-btn {
+    background-color: slategray !important;
 }
