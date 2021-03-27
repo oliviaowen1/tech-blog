@@ -35,9 +35,9 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.put('/edit/:id', withAuth, async (req, res) => {
+router.put('/dashboard/edit/:id', withAuth, async (req, res) => {
   try {
-    const postData = await post.update(req.body, {
+    const postData = await Post.update(req.body, {
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
