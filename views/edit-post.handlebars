@@ -2,30 +2,27 @@
   <a href="/dashboard" class="is-pulled-right"> &larr; back to dashboard</a>
   <h2 class="title mt-3">Edit post</h2><hr>
 <form class="form new-post-form edit-post-form">
+  {{!-- post title --}}
       <div class="form-group">
         <label for="post-title">Post Title:</label><br>
       <input name="edit-post-title" contenteditable="true" id="post-name" value="{{name}}" /> 
       </div>
+      {{!-- post content/description --}}
       <div class="form-group">
         <label for="post-desc">Post Content:</label><br>
       <input name="edit-post-body" contenteditable="true" id="post-desc" value="{{description}}" /> 
+      {{!-- comments section --}}
+      {{!-- <div class="is-pulled-right">
+       created by you on {{format_date post.created_at}}
+      |
+      <a href="/post/{{post.id}}">{{post.comments.length}} {{ "comment" post.comments.length}}</a>
+    </div> --}}
+      {{!-- submit button --}}
       <div class="form-group">
         <button type="submit" class="button btn-success submit"> Save Changes</button>
       </div>
     </form>
 </article>
-
+{{> comments post.comments}}
 <script src="/js/editpost.js"></script>
-{{!-- 
-<form class="form new-post-form edit-post-form">
-      <div class="form-group">
-        <label for="post-title">Post Title:</label><br>
-      <input name="edit-post-title" contenteditable="true" id="post-name" value="{{name}}" /> 
-      </div>
-      <div class="form-group">
-        <label for="post-desc">Post Content:</label><br>
-      <input name="edit-post-body" contenteditable="true" id="post-desc" value="{{description}}" /> 
-      <div class="form-group">
-        <button type="submit" class="button btn-success submit"> Save Changes</button>
-      </div>
-    </form> --}}
+<script src="/javascript/comment.js"></script>
