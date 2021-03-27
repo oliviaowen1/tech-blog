@@ -18,11 +18,16 @@
 </div>
 <br>
 {{!-- comments section --}}
-<div class="row">
-  <div class="col-md-8 bg-light comment-post">
-    <h2>Comments:</h2>
-    <textarea class="form-field text-light cols-20" contenteditable="true" id="comment" placeholder="Please write your comment here:"></textarea>
-    <br>
-    <button class="button btn-success btn btn-sm comment-submit" id="submit-comment">Submit</button>
-  </div>
-</div>
+<form class="form comment-post-form comment-post-style col-md-8">
+<h3> Comments </h3>
+      {{!-- post content/description --}}
+      <div class="form-group">
+        <label for="post-desc">Please write your comment here: </label><br>
+      <input name="comment-post-body" contenteditable="true" id="comment-body"/> 
+      {{!-- submit button --}}
+      <div class="form-group">
+        <button type="submit" class="button btn-success btn btn-sm submit-comment"> Submit </button>
+      </div>
+    </form>
+
+<script src="/js/comment.js"></script>

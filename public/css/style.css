@@ -24,16 +24,19 @@ body {
 .b-post {
     background-color: slategray !important;
     color: white;
+    border-radius: 15px 15px 0px 0px; 
 }
 
 .b-post-two {
     background-color: lightsteelblue !important;
     color: white !important;
+    border-radius: 0px 0px 15px 15px;
 }
 
-.comment-post {
+.comment-post-style {
     background-color:skyblue !important;
     padding: 20px;
+    border-radius: 15px;
 }
 
 .home-list {
