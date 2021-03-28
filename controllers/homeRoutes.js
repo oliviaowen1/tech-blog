@@ -8,9 +8,12 @@ router.get('/', withAuth, async (req, res) => {
     const postData = await Post.findAll({
       include: [
         {
+            model: Comment,
+          },
+          {
           model: User,
           attributes: ['name'],
-        },
+          },
       ],
     });
 
